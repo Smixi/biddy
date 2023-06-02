@@ -1,0 +1,3 @@
+<template>
+  Profile list
+</template>
