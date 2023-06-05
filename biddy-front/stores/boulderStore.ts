@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import { Boulder } from '~/models/boulder';
 import { DefaultStoreNames } from './storeNames';
-import { BoulderService } from '~/services/boulderService';
 
 const boulderService = useBoulderService()
 
@@ -23,6 +22,7 @@ export const useBoulderStore = defineStore(DefaultStoreNames.BOULDER, () => {
     if(retrieved !== undefined){
       setBoulders(retrieved)
     }
+    // TODO: Handle error
   }
 
   return { boulders, currentBoulder, setBoulders, setCurrentBoulder, retrieveBoulders }
