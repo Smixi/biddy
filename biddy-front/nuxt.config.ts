@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         '@vite-pwa/nuxt',
         'nuxt-icon',
         '@anu-vue/nuxt',
+        '@nuxt/image',
     ],
     experimental: {
         // when using generate, payload js assets included in sw precache manifest

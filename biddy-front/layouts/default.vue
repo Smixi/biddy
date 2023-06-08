@@ -1,36 +1,27 @@
 <template>
   <section id="page">
     <div class="header">
-      <AppHeader/>
+      <AppHeader />
     </div>
     <main>
       <div class="flex h-full w-full">
-        <div class="sidebar">
-          <AppNav :visible="isSideBarVisible"/>
-        </div>
+        <AppNav/>
         <div class="flex-auto">
-          <slot/>
+          <slot />
         </div>
       </div>
     </main>
     <div class="footer">
-      <AppFooter/>
+      <AppFooter />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-  import { storeToRefs } from 'pinia';
-  import { useGlobalStore } from '@/stores/globalStore';
-
-  const store = useGlobalStore();
-
-  const { isSideBarVisible } = storeToRefs(store);
 
 </script>
 
 <style>
-
 #page {
   display: grid;
   width: 100%;
@@ -43,23 +34,17 @@
   grid-template-columns: 1fr;
 }
 
-#page > .header {
+#page>.header {
   grid-area: head;
   background-color: #8ca0ff;
 }
 
-.sidebar {
-  grid-area: nav;
-  background-color: #ffa08c;
-  transition: width 0.75s,
-}
-
-#page > main {
+#page>main {
   grid-area: main;
   background-color: #ffff64;
 }
 
-#page > .footer {
+#page>.footer {
   grid-area: foot;
   background-color: #8cffa0;
 }

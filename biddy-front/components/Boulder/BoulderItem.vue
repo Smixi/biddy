@@ -1,10 +1,10 @@
 <template>
   <div
-    class="flex overflow-hidden bg-white space-x-2 shadow-md hover:bg-gray-300 hover:opacity-90 hover:shadow-sm flex-row transition m-x-3 duration-320 hover:scale-102 justify-center items-stretch rounded-full">
-    <div :class="`text-center basis-2/12 md:basis-1/12 bg-${getGradeColor()}-200 rounded-l-full justify-center`">
+    class="flex overflow-hidden bg-gray-200 space-x-2 shadow-md hover:bg-gray-300 hover:opacity-90 hover:shadow-sm flex-row transition m-x-3 duration-320 hover:scale-102 justify-center items-stretch rounded-full">
+    <div :class="`text-center basis-2/12 md:basis-1/12 rounded-l-full justify-center border-r-black ${getGradeColor()}`">
       <div class="flex items-center h-full w-full">
         <span class="flex-1">
-          {{ boulder.grade === BoulderGrade.MYSTERY ? "?" : boulder.grade }}
+          V{{ boulder.grade === BoulderGrade.MYSTERY ? "?" : boulder.grade }}
         </span>
       </div>
     </div>
@@ -47,23 +47,25 @@ const props = defineProps<{ boulder: Boulder }>()
 const { boulder } = toRefs(props)
 
 function getGradeColor() {
-  console.log(boulder.value.grade)
   if (boulder.value.grade === BoulderGrade.MYSTERY) {
-    return "pink"
+    return "bg-purple-200"
   }
-  if (boulder.value.grade < 3) {
-    return "green"
+  if (boulder.value.grade < 2) {
+    return "bg-yellow-200"
+  }
+  if (boulder.value.grade < 4) {
+    return "bg-green-200"
   }
   if (boulder.value.grade < 6) {
-    return "orange"
+    return "bg-blue-200"
   }
-  if (boulder.value.grade < 9) {
-    return "red"
+  if (boulder.value.grade < 8) {
+    return "bg-red-200"
   }
-  if (boulder.value.grade < 12) {
-    return "black"
+  if (boulder.value.grade < 10) {
+    return "bg-black text-white"
   }
-  return "white"
+  return "bg-white"
 }
 
 </script>
