@@ -1,3 +1,6 @@
+import type { Gym } from './gym'
+import type { User } from './users'
+
 export enum BoulderGrade {
   V0 = 1,
   V1 = 2,
@@ -9,22 +12,40 @@ export enum BoulderGrade {
   V7 = 8,
   V8 = 9,
   V9 = 10,
-  V11 = 11,
-  V12 = 12,
-  V13 = 13,
-  V14 = 14,
-  MYSTERY = -1
+  V10 = 11,
+  V11 = 12,
+  V12 = 13,
+  V13 = 14,
+  V14 = 15,
+  MYSTERY = -1,
 }
 
 export type BoulderCategory = string
 
+export type BoulderId = string
+
 export interface Boulder {
-  id: string;
-  name: string;
-  grade: BoulderGrade;
-  strength: number;
-  technique: number;
-  reading: number;
-  category: BoulderCategory[];
-  liked: number;
+  id: BoulderId
+  name: string
+  grade: BoulderGrade
+  category: BoulderCategory[]
+  liked: number
+  publishedAt: Date
+  pictureUrl: string
+  rating: BoulderRating
+  live: boolean
+}
+
+export interface BoulderRating {
+  strength: number
+  technique: number
+  reading: number
+  dynamic: number
+  footwork: number
+  fingerStrength: number
+}
+
+export interface BoulderWithRelation extends Boulder {
+  publishedBy: User
+  gym: Gym
 }

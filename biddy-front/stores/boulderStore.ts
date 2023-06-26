@@ -1,30 +1,31 @@
 import { defineStore } from 'pinia'
-import { Boulder } from '~/models/boulder';
-import { DefaultStoreNames } from './storeNames';
+import { DefaultStoreNames } from './storeNames'
+import type { Boulder, BoulderId } from '~/models/boulder'
 
 const boulderService = useBoulderService()
 
 export const useBoulderStore = defineStore(DefaultStoreNames.BOULDER, () => {
+  const boulders: Ref<Boulder[]> = ref([])
+  const currentBoulder: Ref<Boulder | null> = ref(null)
 
-  const boulders: Ref<Boulder[]> = ref([]);
-  const currentBoulder: Ref<Boulder | {}> = ref({})
-
-  function setBoulders(newBoulders: Boulder[]){
-    boulders.value = newBoulders;
+  function setBoulders(newBoulders: Boulder[]) {
+    boulders.value = newBoulders
   }
 
-  function setCurrentBoulder(newBoulder: Boulder){
-    currentBoulder.value = newBoulder;
+  function setCurrentBoulder(newBoulder: Boulder) {
+    currentBoulder.value = newBoulder
   }
 
-  function retrieveBoulders(){
+  function retrieveBoulders() {
     const retrieved = boulderService?.retrieveBoulders()
-    if(retrieved !== undefined){
-      setBoulders(retrieved)
-    }
+    setBoulders(retrieved)
     // TODO: Handle error
   }
 
-  return { boulders, currentBoulder, setBoulders, setCurrentBoulder, retrieveBoulders }
-  
+  function retrieveBoulder(boulderId: BoulderId) {
+    const retrieved = boulderService?.retrieveBoulder(boulderId)
+    setCurrentBoulder(retrieved)
+  }
+
+  return { boulders, currentBoulder, setBoulders, setCurrentBoulder, retrieveBoulders, retrieveBoulder }
 })

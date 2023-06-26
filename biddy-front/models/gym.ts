@@ -1,5 +1,7 @@
+export type GymId = string
 export interface Gym {
-  city: string,
+  id: GymId
+  city: string
   name: string
-  logo?: string,
+  logoUrl?: string
 }

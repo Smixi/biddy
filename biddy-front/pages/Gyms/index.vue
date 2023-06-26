@@ -1,16 +1,23 @@
-<template>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <GymItem v-for="gym of gyms" :gym="gym"></GymItem>
-  </div>
-</template>
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { Gym } from '~/models/gym'
+import { useGymStore } from '~/stores/gymStore'
 
-import { useGymStore } from '~/stores/gymStore';
-import { storeToRefs } from 'pinia';
 const gymStore = useGymStore()
 const { gyms } = storeToRefs(gymStore)
-const { retrieveGyms } = gymStore
+const { retrieveGyms, setCurrentGym } = gymStore
+
+
+function goToBoulder(gym: Gym){
+  setCurrentGym(gym)
+  navigateTo(`/gyms/${gym.id}`)
+}
 
 retrieveGyms()
-
 </script>
+
+<template>
+  <div class="grid grid-cols-2 gap-4 md:grid-cols-3 auto-rows-fr">
+    <GymItem v-for="gym of gyms" :key="gym.id" :gym="gym" @gym-clicked="goToBoulder(gym)"/>
+  </div>
+</template>

@@ -1,5 +1,7 @@
-import { BoulderService, MockBoulderService } from "./boulderService";
-import { GymService, MockGymService } from "./gymService";
+import type { BoulderService } from './boulderService'
+import { MockBoulderService } from './boulderService'
+import type { GymService } from './gymService'
+import { MockGymService } from './gymService'
 
 interface Services {
   boulderService: BoulderService
@@ -7,18 +9,17 @@ interface Services {
 }
 
 abstract class ServicesProvider {
-  
   services: Services
 
   abstract getServices(): Services
-  
-  constructor(){
+
+  constructor() {
     this.services = this.getServices()
   }
 }
 
 export class MockServiceProvider extends ServicesProvider {
   getServices(): Services {
-    return { boulderService: new MockBoulderService(), gymService: new MockGymService()}
+    return { boulderService: new MockBoulderService(), gymService: new MockGymService() }
   }
 }

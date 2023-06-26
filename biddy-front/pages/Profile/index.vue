@@ -1,3 +1,5 @@
 <template>
-  Profile list
+  <div>
+    Profile list
+  </div>
 </template>

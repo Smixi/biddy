@@ -1,4 +1,3 @@
-
 import {
   defineConfig,
   presetAttributify,
@@ -14,7 +13,7 @@ import { presetThemeDefault } from '@anu-vue/preset-theme-default'
 
 export default defineConfig({
   shortcuts: [
-    {"nav-btn": "hover:border-2 hover:border-yellow-50"},
+    { 'nav-btn': 'hover:border-2 hover:border-yellow-50' },
   ],
   include: [/.*\/anu-vue\.js(.*)?$/, './**/*.vue', './**/*.md'],
   presets: [
@@ -33,7 +32,7 @@ export default defineConfig({
       },
     }),
     presetAnu(),
-    presetThemeDefault()
+    presetThemeDefault(),
   ],
   transformers: [
     transformerDirectives(),

@@ -3,20 +3,28 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev ",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "tests": "playwright test",
+    "tests:ui": "playwright test --ui"
   },
   "dependencies": {
     "@anu-vue/nuxt": "^0.13.1",
     "@anu-vue/preset-theme-default": "^0.13.1",
     "@unocss/eslint-config": "^0.51.13",
     "@unocss/nuxt": "^0.51.13",
+    "chart.js": "^4.3.0",
     "lodash.uniqueid": "^4.0.1",
+    "vue-chartjs": "^5.2.0",
     "vue-tsc": "^1.2.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.39.5",
+    "@faker-js/faker": "^8.0.2",
     "@iconify-json/bx": "^1.1.6",
     "@iconify-json/carbon": "^1.1.16",
     "@iconify-json/twemoji": "^1.1.11",
@@ -24,6 +32,7 @@
     "@nuxt/image": "1.0.0-rc.1",
     "@nuxtjs/color-mode": "^3.2.0",
     "@pinia/nuxt": "^0.4.8",
+    "@playwright/test": "^1.35.1",
     "@types/lodash.uniqueid": "^4.0.7",
     "@vite-pwa/nuxt": "^0.0.7",
     "@vueuse/nuxt": "^9.13.0",

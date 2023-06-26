@@ -1,11 +1,15 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
   <section id="page">
     <div class="header">
       <AppHeader />
     </div>
     <main>
-      <div class="flex h-full w-full">
-        <AppNav/>
+      <div class="h-full w-full flex">
+        <AppNav />
         <div class="flex-auto">
           <slot />
         </div>
@@ -16,10 +20,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-
-</script>
 
 <style>
 #page {

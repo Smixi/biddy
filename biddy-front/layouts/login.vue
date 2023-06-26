@@ -1,10 +1,10 @@
 <template>
   <main>
-    <slot/>
+    <slot />
   </main>
 </template>
-<style>
 
+<style>
 #page {
   display: grid;
   width: 100%;
